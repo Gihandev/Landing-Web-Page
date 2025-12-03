@@ -1,0 +1,45 @@
+version: 2
+updates:
+  # Main: npm dependencies
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "tuesday"
+      time: "09:00"
+      timezone: "Asia/Colombo"
+    open-pull-requests-limit: 10
+    reviewers:
+      - "Gihandev"
+    assignees:
+      - "Gihandev"
+    # Group updates to reduce noise and improve safety
+    groups:
+      production-ui:
+        dependency-type: "production"
+        # These often need visual testing
+        patterns:
+          - "flowbite-react"
+          - "framer-motion"
+          - "gsap"
+          - "@radix-ui/*"
+      core-react:
+        dependency-type: "production"
+        patterns:
+          - "react"
+          - "react-dom"
+          - "react-router-dom"
+      utilities:
+        dependency-type: "production"
+        patterns:
+          - "clsx"
+          - "tailwind-merge"
+          - "react-icons"
+
+  # Keep GitHub Actions up to date (if added later)
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "tuesday"
+      time: "09:00"
